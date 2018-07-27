@@ -1,0 +1,18 @@
+[mysqld]
+{{ if var "MYSQL_INNODB_LARGE_PREFIX" }}
+innodb_file_format    = Barracuda
+innodb_file_per_table = 1
+innodb_large_prefix
+{{ end }}
+
+character-set-server  = {{ var "MYSQL_CHARSET" | default "utf8" }}
+collation-server      = {{ var "MYSQL_COLLATION" | default "utf8_general_ci" }}
+
+[client]
+default-character-set = {{ var "MYSQL_CHARSET" | default "utf8" }}
+
+[mysqldump]
+default-character-set = {{ var "MYSQL_CHARSET" | default "utf8" }}
+
+[mysql]
+default-character-set = {{ var "MYSQL_CHARSET" | default "utf8" }}
